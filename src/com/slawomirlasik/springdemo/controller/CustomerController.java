@@ -77,5 +77,17 @@ public class CustomerController {
 		
 		return "redirect:/customer/list";
 	}
+	
+	@GetMapping("/search")
+	public String searchCustomer(@RequestParam("theSearchName") String theSearchName, Model theModel) {
+		
+		// search customers from the service (case insensitive)
+		List<Customer> theCustomers = customerService.getCustomers(theSearchName.toLowerCase());
+		
+		// add customers to the model
+		theModel.addAttribute("customers", theCustomers);
+		
+		return "list-customers";
+	}
 
 }
