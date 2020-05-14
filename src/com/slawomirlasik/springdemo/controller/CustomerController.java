@@ -27,33 +27,21 @@ public class CustomerController {
 
 		// add the customers to the model
 		theModel.addAttribute("customers", theCustomers);
-		
+
 		System.out.println("Got from database: " + theCustomers);
 
 		return "list-customers";
 	}
-	
+
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
+
+		// create model attribute to bind form data
+		Customer customer = new Customer();
+
+		theModel.addAttribute("customer", customer);
+
 		return "customer-form";
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
